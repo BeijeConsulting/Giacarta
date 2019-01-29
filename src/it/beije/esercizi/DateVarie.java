@@ -25,6 +25,7 @@ public class DateVarie {
 		
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
 		System.out.println(dateTimeFormatter.format(data));
+		System.out.println(data.format(dateTimeFormatter));
 		
 		System.out.println(data.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ITALIAN));
 	}
