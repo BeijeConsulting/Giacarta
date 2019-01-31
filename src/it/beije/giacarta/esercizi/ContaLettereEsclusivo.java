@@ -1,19 +1,19 @@
-package it.beije.esercizi;
+package it.beije.giacarta.esercizi;
 
-public class ContaLettereInclusivo {
+
+public class ContaLettereEsclusivo {
 
 	public static void main(String[] args) {
 		String s = args[0];
 		
 		int c;
-		String lettere = "";
-		
+		String lettere = s; //new String(s);
 		for (int i = 0; i < s.length(); i++) {
 			char x = s.charAt(i);
 			c = 0;
 			
-			//approccio inclusivo
-			if ( ! lettere.contains(Character.toString(x)) ) {
+			//approccio esclusivo
+			if (lettere.contains(Character.toString(x))) {
 				//ciclo ogni volta sulla stringa
 				for (int j = 0; j < s.length(); j++) {
 					if (s.charAt(j) == x) c++;
@@ -21,8 +21,8 @@ public class ContaLettereInclusivo {
 				
 				System.out.println(x + " : " + c);
 				
-				lettere += x;
-			}
+				lettere = lettere.replace(Character.toString(x), "");
+			}			
 		}
 	}
 }

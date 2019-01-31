@@ -1,4 +1,4 @@
-package it.beije.esercizi;
+package it.beije.giacarta.esercizi;
 
 import java.util.Arrays;
 
