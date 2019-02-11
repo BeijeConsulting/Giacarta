@@ -1,6 +1,6 @@
 package it.beije.giacarta.fattoria;
 
-public class Animale {
+public class Animale implements EssereVivente {
 	
 	private int numeroZampe;
 	
@@ -23,6 +23,10 @@ public class Animale {
 	
 	public void nutrirsi() {
 		System.out.println("nutrirsi...");
+	}
+
+	public void riprodursi() {
+		System.out.println("riprodursi...");
 	}	
 
 }
