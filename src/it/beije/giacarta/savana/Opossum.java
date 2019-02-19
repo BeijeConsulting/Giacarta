@@ -2,8 +2,6 @@ package it.beije.giacarta.savana;
 
 public class Opossum implements Predatore, Preda, Onnivoro {
 
-	public void mangioErba() {}
-
 	public void mangioCarne() {}
 
 	public void mangioGhiande() {}
