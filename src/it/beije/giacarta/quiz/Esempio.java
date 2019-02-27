@@ -25,27 +25,35 @@ public class Esempio {
 		
 		List<Domanda> domande = Utils.readFileDomande("C:\\Users\\Mosca\\git\\Giacarta\\src\\it\\beije\\giacarta\\quiz\\domande.xml");
 		
-		
 		Scanner s = new Scanner(System.in);
 		for (Domanda d : domande) {
 			System.out.println("Chapter " + d.getChapter() + " domanda " + d.getId());
 			System.out.println(d.getTesto());
-			String rispostaEsatta = d.getRisposta();
+			Risposta risposta = d.getRisposta();
 
-			String risposta = s.nextLine().trim().toUpperCase();
+			String rispostaUtente = s.nextLine().trim().toUpperCase();
+			risposta.setRispostaUtente(rispostaUtente);
+			System.out.println("\n###############################################\n");
 			
-			boolean corretta = controllaRisposta(rispostaEsatta, risposta);
+			//break;
+		}
+		s.close();
+		
+		
+		//verifico risposte
+		for (Domanda d : domande) {
+			boolean corretta = controllaRisposta(d.getRisposta().getRispostaEsatta(), d.getRisposta().getRispostaUtente());
 			
-			System.out.println("\nla tua risposta : " + risposta + "\n");
+			System.out.println("DOMANDA " + d.getId() + " : la tua risposta : " + d.getRisposta().getRispostaUtente() + "\n");
 			if (corretta) {
 				System.out.println("ESATTO!!! :)");
 			} else {
-				System.out.println("La risposta esatta era " + rispostaEsatta + " :(");
+				System.out.println("La risposta esatta era " +  d.getRisposta().getRispostaEsatta() + " :(");
 			}
 			
-			break;
+			System.out.println("\n");
 		}
-		s.close();
+		
 	}
 
 }
