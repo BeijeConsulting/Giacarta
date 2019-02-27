@@ -52,7 +52,9 @@ public class Utils {
 		        int id = Integer.parseInt(domanda.getAttribute("id"));
 		        int chapter = Integer.parseInt(domanda.getAttribute("chapter"));
 		        String testo = contenutoDomanda.get(0).getTextContent();
-		        String r = contenutoDomanda.get(1).getTextContent();
+		        String risposta = contenutoDomanda.get(1).getTextContent();
+		        Risposta r = new Risposta();
+		        r.setRispostaEsatta(risposta);
 	        	Domanda d = new Domanda(id, chapter, testo, r);
 	        	arrayDomande.add(d);
 	        }	        		

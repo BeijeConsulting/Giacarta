@@ -1,13 +1,14 @@
 package it.beije.giacarta.quiz;
 
-public class Domanda implements StrutturaDomanda {
+public class Domanda {
 
 	private int id;
 	private int chapter;
 	private String testo;
-	private String risposta;
+	private Risposta risposta;
 	
-	public Domanda(int id, int chapter, String testo, String risposta) {
+	
+	public Domanda(int id, int chapter, String testo, Risposta risposta) {
 		this.id = id;
 		this.chapter = chapter;
 		this.testo = testo;
@@ -26,7 +27,7 @@ public class Domanda implements StrutturaDomanda {
 		return testo;
 	}
 	
-	public String getRisposta() {
+	public Risposta getRisposta() {
 		return risposta;
 	}
 	

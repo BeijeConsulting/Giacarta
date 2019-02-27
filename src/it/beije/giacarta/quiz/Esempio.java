@@ -1,6 +1,5 @@
 package it.beije.giacarta.quiz;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,20 +24,15 @@ public class Esempio {
 	public static void main(String[] args) {
 		
 		List<Domanda> domande = Utils.readFileDomande("C:\\Users\\Mosca\\git\\Giacarta\\src\\it\\beije\\giacarta\\quiz\\domande.xml");
-		List<Risposta> risposte = new ArrayList<Risposta>(domande.size()); 
 		
 		Scanner s = new Scanner(System.in);
 		for (Domanda d : domande) {
 			System.out.println("Chapter " + d.getChapter() + " domanda " + d.getId());
 			System.out.println(d.getTesto());
-			String rispostaEsatta = d.getRisposta();
+			Risposta risposta = d.getRisposta();
 
 			String rispostaUtente = s.nextLine().trim().toUpperCase();
-			
-			Risposta risposta = new Risposta();
 			risposta.setRispostaUtente(rispostaUtente);
-			risposta.setRispostaEsatta(rispostaEsatta);
-			risposte.add(risposta);
 			System.out.println("\n###############################################\n");
 			
 			//break;
@@ -47,15 +41,14 @@ public class Esempio {
 		
 		
 		//verifico risposte
-		int d = 1;
-		for (Risposta r : risposte) {
-			boolean corretta = controllaRisposta(r.getRispostaEsatta(), r.getRispostaUtente());
+		for (Domanda d : domande) {
+			boolean corretta = controllaRisposta(d.getRisposta().getRispostaEsatta(), d.getRisposta().getRispostaUtente());
 			
-			System.out.println("DOMANDA " + d++ + " : la tua risposta : " + r.getRispostaUtente() + "\n");
+			System.out.println("DOMANDA " + d.getId() + " : la tua risposta : " + d.getRisposta().getRispostaUtente() + "\n");
 			if (corretta) {
 				System.out.println("ESATTO!!! :)");
 			} else {
-				System.out.println("La risposta esatta era " +  r.getRispostaEsatta() + " :(");
+				System.out.println("La risposta esatta era " +  d.getRisposta().getRispostaEsatta() + " :(");
 			}
 			
 			System.out.println("\n");
