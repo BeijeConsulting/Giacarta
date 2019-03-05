@@ -44,7 +44,6 @@ public class CSVutils {
 		return content;
 	}
 	
-	
 	public static void main (String[] args) throws Exception {
 		//leggo il file e carico ciascuna riga in un array di stringhe
 		List<String> strings = CSVutils.getFileAsStrings("C:\\temp\\rubrica.txt");
@@ -105,7 +104,6 @@ public class CSVutils {
 		}
 		
 	}
-
 	
 //	public static void main (String[] args) throws Exception {
 //		File file = new File("C:\\temp\\pippo.txt");
