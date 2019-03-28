@@ -8,12 +8,13 @@ import java.sql.Statement;
 
 public class DButils {
 	
-	private static final String DB_USER = "privategriffe";
-	private static final String DB_PASSWORD = "privategriffe";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "Beije06";
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/gestionale?serverTimezone=CET";
+	private static Connection conn = null;
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		Connection conn = null;
+		
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -23,21 +24,20 @@ public class DButils {
 
 	public static void main(String argv[]) {
 		
-		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rset= null;
 
 		try {
 			conn = DButils.getConnection();
 			
-			String insert = "INSERT INTO tabella_prova VALUES (null, 'edi', 'paperetti', 'M', '20190221')";
+//			String delete = "delete from tabella_prova where id = 13";
 
 			String query = "SELECT * from tabella_prova";
 
 
 			stmt = conn.createStatement();
 
-			stmt.execute(insert);
+//			stmt.execute(delete);
 			rset = stmt.executeQuery(query);
 
 			while (rset.next()) {
@@ -45,7 +45,7 @@ public class DButils {
 				String nome = rset.getString("nome");
 				String cognome = rset.getString("cognome");
 
-				System.out.println("" + id + ", " + nome + ", " + cognome);
+				System.out.println("" + id + " " + nome + " " + cognome);
 			}
 
 		}

@@ -20,7 +20,7 @@ public class CSVutils {
 //	  PRIMARY KEY (ID)
 //	)
 
-	public static List<String> getFileAsStrings(String pathFile) throws Exception {
+	public static List<String> getFileAsStrings(String pathFile) {
 		List<String> content = new ArrayList<String>();
 		
 		BufferedReader reader = null;
@@ -32,7 +32,6 @@ public class CSVutils {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
 		} finally {
 			try {
 				reader.close();
@@ -47,7 +46,7 @@ public class CSVutils {
 	
 	public static void main (String[] args) throws Exception {
 		//leggo il file e carico ciascuna riga in un array di stringhe
-		List<String> strings = CSVutils.getFileAsStrings("C:\\temp\\rubrica.txt");
+		List<String> strings = CSVutils.getFileAsStrings("E:\\rubrica.txt");
 
 		int id;
 		String nome;
@@ -62,7 +61,7 @@ public class CSVutils {
 			System.out.println(row);
 			
 			//separo la riga nelle ulteriori stringhe separate da ';' 
-			StringTokenizer tokenizer = new StringTokenizer(row, ";");
+			StringTokenizer tokenizer = new StringTokenizer(row, ",");
 //			while (tokenizer.hasMoreTokens()) {
 //				System.out.println(tokenizer.nextToken());
 //			}
